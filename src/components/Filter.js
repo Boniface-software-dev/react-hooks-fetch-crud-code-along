@@ -1,18 +1,19 @@
 import React from "react";
 
 function Filter({ category, onCategoryChange }) {
+  const categories = ["All", "Produce", "Dairy", "Dessert"];
+
   return (
     <div className="Filter">
-      <select
-        name="filter"
-        value={category}
-        onChange={(e) => onCategoryChange(e.target.value)}
-      >
-        <option value="All">Filter by category</option>
-        <option value="Produce">Produce</option>
-        <option value="Dairy">Dairy</option>
-        <option value="Dessert">Dessert</option>
-      </select>
+      {categories.map((cat) => (
+        <button
+          key={cat}
+          className={cat === category ? "selected" : ""}
+          onClick={() => onCategoryChange(cat)}
+        >
+          {cat}
+        </button>
+      ))}
     </div>
   );
 }
